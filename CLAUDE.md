@@ -77,6 +77,10 @@ reports/                    # generated artifacts (gitignored)
   daily/  weekly/  quarterly/  events/
 ```
 
+## Output conventions
+
+- **Report language**: 모든 사용자용 `.md` 리포트(reports/ 하위 전체 — market, fundamentals, charts, strategy, tax, daily, weekly, quarterly, events)는 **한글**을 기본으로 작성합니다. 티커·지표명·숫자 단위 등 고유명사는 영문 그대로 둬도 됩니다. JSON 스키마(`schemas/`) 필드명·enum 값은 그대로 영문 유지.
+
 ## Design principles
 
 1. **After-tax decisions**: financial-advisor proposes → tax-advisor re-ranks by `after_tax_return_pct`. Always show post-tax numbers.
