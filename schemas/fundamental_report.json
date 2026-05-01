@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FundamentalReport",
+  "description": "Output schema for fundamental-analyst-{kr,us,asia} agents. Covers full financial health with extra emphasis on earnings.",
+  "type": "object",
+  "required": ["ticker", "asof", "health", "earnings", "confidence"],
+  "properties": {
+    "ticker": {"type": "string"},
+    "name": {"type": "string"},
+    "market": {"type": "string", "enum": ["KR", "US", "JP", "CN", "HK", "TW", "VN"]},
+    "asof": {"type": "string", "format": "date-time"},
+
+    "health": {
+      "type": "object",
+      "description": "Overall financial state.",
+      "properties": {
+        "revenue_trend": {"type": "array", "items": {"type": "number"}, "description": "Last 8 quarters."},
+        "op_margin_trend": {"type": "array", "items": {"type": "number"}},
+        "net_margin_trend": {"type": "array", "items": {"type": "number"}},
+        "fcf_trend": {"type": "array", "items": {"type": "number"}},
+        "roe": {"type": "number"},
+        "debt_to_equity": {"type": "number"},
+        "current_ratio": {"type": "number"},
+        "peer_percentile": {
+          "type": "object",
+          "properties": {
+            "growth": {"type": "number"},
+            "margin": {"type": "number"},
+            "leverage": {"type": "number"}
+          }
+        },
+        "narrative": {"type": "string"}
+      }
+    },
+
+    "earnings": {
+      "type": "object",
+      "description": "Earnings consensus, surprise history, and price reaction patterns.",
+      "required": ["consensus", "surprise_history"],
+      "properties": {
+        "consensus": {
+          "type": "object",
+          "properties": {
+            "next_quarter_eps": {"type": "number"},
+            "next_quarter_rev": {"type": "number"},
+            "fy_eps": {"type": "number"},
+            "fy_rev": {"type": "number"},
+            "revision_30d_pct": {"type": "number"},
+            "whisper_gap_pct": {"type": "number"}
+          }
+        },
+        "surprise_history": {
+          "type": "array",
+          "description": "Past earnings: surprise % vs T+1/T+5/T+20 returns.",
+          "items": {
+            "type": "object",
+            "required": ["date", "eps_surprise_pct"],
+            "properties": {
+              "date": {"type": "string", "format": "date"},
+              "eps_surprise_pct": {"type": "number"},
+              "rev_surprise_pct": {"type": "number"},
+              "ret_t1": {"type": "number"},
+              "ret_t5": {"type": "number"},
+              "ret_t20": {"type": "number"}
+            }
+          }
+        },
+        "reaction_pattern": {
+          "type": "object",
+          "description": "Aggregated bucket statistics. e.g., 'surprise>+5% → avg t5 +3.2%, hit 75%'.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "n": {"type": "integer"},
+              "avg_t1": {"type": "number"},
+              "avg_t5": {"type": "number"},
+              "avg_t20": {"type": "number"},
+              "hit_ratio": {"type": "number"}
+            }
+          }
+        },
+        "pre_announcement_drift": {
+          "type": "object",
+          "description": "Price/volume behavior in the 30 days before earnings.",
+          "properties": {
+            "price_change_pct": {"type": "number"},
+            "volume_zscore": {"type": "number"},
+            "implied_signal": {"type": "string"}
+          }
+        },
+        "next_earnings_date": {"type": "string", "format": "date"},
+        "scenario": {
+          "type": "object",
+          "description": "If consensus comes in at X, expected price reaction based on history.",
+          "properties": {
+            "base_case": {"type": "string"},
+            "beat_case": {"type": "string"},
+            "miss_case": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "valuation": {
+      "type": "object",
+      "properties": {
+        "pe": {"type": "number"},
+        "fwd_pe": {"type": "number"},
+        "ev_ebitda": {"type": "number"},
+        "pbr": {"type": "number"},
+        "peer_pe_median": {"type": "number"}
+      }
+    },
+
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "severity"],
+        "properties": {
+          "label": {"type": "string"},
+          "severity": {"type": "string", "enum": ["low", "medium", "high"]},
+          "rationale": {"type": "string"}
+        }
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {"type": "string"},
+          "url": {"type": "string"}
+        }
+      }
+    },
+
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "markdown_report_path": {"type": "string", "description": "Path to user-facing MD copy under reports/fundamentals/."}
+  }
+}

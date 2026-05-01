@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChartReport",
+  "description": "Technical analysis output (market-agnostic).",
+  "type": "object",
+  "required": ["ticker", "asof", "timeframe", "trend", "signals", "confidence"],
+  "properties": {
+    "ticker": {"type": "string"},
+    "asof": {"type": "string", "format": "date-time"},
+    "timeframe": {"type": "string", "enum": ["1d", "1w", "1m"], "description": "Primary timeframe."},
+    "trend": {"type": "string", "enum": ["up", "down", "sideways"]},
+    "trend_strength": {"type": "number", "minimum": 0, "maximum": 1},
+    "support": {"type": "array", "items": {"type": "number"}},
+    "resistance": {"type": "array", "items": {"type": "number"}},
+    "moving_averages": {
+      "type": "object",
+      "properties": {
+        "ma20": {"type": "number"},
+        "ma60": {"type": "number"},
+        "ma120": {"type": "number"},
+        "ma200": {"type": "number"},
+        "alignment": {"type": "string", "enum": ["golden", "dead", "mixed"]}
+      }
+    },
+    "momentum": {
+      "type": "object",
+      "properties": {
+        "rsi14": {"type": "number"},
+        "macd_hist": {"type": "number"},
+        "stoch_k": {"type": "number"}
+      }
+    },
+    "volume": {
+      "type": "object",
+      "properties": {
+        "avg20": {"type": "number"},
+        "spike": {"type": "boolean"},
+        "obv_trend": {"type": "string", "enum": ["up", "down", "flat"]}
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "direction": {"type": "string", "enum": ["bullish", "bearish", "neutral"]},
+          "confidence": {"type": "number"}
+        }
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "direction", "weight"],
+        "properties": {
+          "label": {"type": "string"},
+          "direction": {"type": "string", "enum": ["buy", "sell", "hold"]},
+          "weight": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "entry_zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "price_low": {"type": "number"},
+          "price_high": {"type": "number"},
+          "stop_loss": {"type": "number"},
+          "target": {"type": "number"}
+        }
+      }
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  }
+}

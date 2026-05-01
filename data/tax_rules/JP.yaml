@@ -1,0 +1,27 @@
+market: JP
+resident: KR
+last_updated: 2026-01-01
+notes: |
+  한국 거주자의 일본 주식 투자. 한일 조세조약(1999) 적용.
+
+capital_gains:
+  rate: 0.22
+  basic_deduction_krw: 2500000
+  description: "해외주식 양도소득 22%. 미국과 동일한 250만원 기본공제 풀 공유."
+  loss_offset: "해외주식 간 손익통산 가능"
+  fx_treatment: "JPY → KRW 환산 후 양도차익 계산. 엔화 약세/강세 영향 큼."
+
+dividend:
+  withholding_jp: 0.15
+  withholding_kr: 0.0
+  description: "일본 원천 15% (조세조약). 일본 측 일반 세율은 20.315%이지만 조약상 15% 한도."
+  note: "일부 종목은 신청 절차에 따라 환급 필요"
+
+transaction:
+  buy: 0.0
+  sell: 0.0
+  description: "거래세 없음"
+
+routing_hints:
+  - "엔화 변동성이 큼 → FX 헤지 ETF(예: 1655) 또는 KR 상장 일본 ETF 비교"
+  - "도쿄증권거래소 직접 매매 시 brokers 수수료 + 환전 스프레드 주의"

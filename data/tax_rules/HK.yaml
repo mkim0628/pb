@@ -1,0 +1,31 @@
+market: HK
+resident: KR
+last_updated: 2026-01-01
+notes: |
+  한국 거주자의 홍콩 주식(HKEX) 투자.
+
+capital_gains:
+  rate: 0.22
+  basic_deduction_krw: 2500000
+  description: "한국 양도세 22%, 250만원 기본공제. 홍콩 측 양도세 없음."
+  hk_capital_gains: 0.0
+  loss_offset: "해외주식 간 손익통산 가능"
+
+dividend:
+  withholding_hk: 0.0
+  withholding_kr: 0.154
+  description: "홍콩은 배당 원천세 0%. 한국에서 14% + 지방세 1.4% = 15.4% 분리과세."
+
+transaction:
+  buy:
+    stamp_duty: 0.001
+    levy: 0.000027
+  sell:
+    stamp_duty: 0.001
+    levy: 0.000027
+  description: "양방향 인지세 0.1% + 거래소 부담금 약간. 인지세는 주요 비용."
+
+routing_hints:
+  - "중국 노출 원할 때 H주(예: 0700 텐센트, 9988 알리바바) 활용 — 본토 A주 대비 세금 단순"
+  - "배당 원천세 0%는 한국 거주자에게 매력적 → 한국에서 15.4% 단일 부과"
+  - "인지세 0.1% × 2 = 0.2% 거래비용을 회전율 높은 전략에서 고려"

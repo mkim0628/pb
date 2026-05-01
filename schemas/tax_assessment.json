@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaxAssessment",
+  "description": "Output from tax-advisor. Re-ranks proposed actions by after-tax expected return and suggests account/market routing.",
+  "type": "object",
+  "required": ["asof", "resident_country", "actions"],
+  "properties": {
+    "asof": {"type": "string", "format": "date-time"},
+    "resident_country": {"type": "string"},
+    "actions": {
+      "type": "array",
+      "description": "1-to-1 mapping with strategy actions, possibly reordered.",
+      "items": {
+        "type": "object",
+        "required": ["ticker", "op", "after_tax_return_pct"],
+        "properties": {
+          "ticker": {"type": "string"},
+          "op": {"type": "string"},
+          "recommended_account": {"type": "string"},
+          "recommended_market": {"type": "string", "description": "If routing across markets is beneficial (e.g., HK ADR vs US)."},
+          "estimated_tax_amount": {"type": "number"},
+          "tax_breakdown": {
+            "type": "object",
+            "properties": {
+              "capital_gains": {"type": "number"},
+              "dividend_withholding": {"type": "number"},
+              "transaction": {"type": "number"},
+              "stamp_duty": {"type": "number"}
+            }
+          },
+          "after_tax_return_pct": {"type": "number"},
+          "loss_harvest_pair": {"type": "string", "description": "Ticker to realize loss with for offset."},
+          "execution_order": {"type": "integer"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "annual_outlook": {
+      "type": "object",
+      "properties": {
+        "kr_basic_deduction_used_pct": {"type": "number"},
+        "us_overseas_deduction_used_krw": {"type": "number", "description": "of 2.5M KRW basic deduction."},
+        "carryover_losses": {"type": "number"},
+        "isa_room_remaining_krw": {"type": "number"}
+      }
+    },
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

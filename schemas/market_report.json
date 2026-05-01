@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MarketReport",
+  "description": "Output schema for market-analyst-{kr,us,asia} agents.",
+  "type": "object",
+  "required": ["region", "asof", "summary", "signals", "confidence"],
+  "properties": {
+    "region": {"type": "string", "enum": ["KR", "US", "JP", "CN", "HK", "TW", "VN", "ASIA"]},
+    "asof": {"type": "string", "format": "date-time"},
+    "horizon_days": {"type": "integer", "minimum": 1},
+    "summary": {"type": "string", "description": "3-5 sentence narrative."},
+    "macro": {
+      "type": "object",
+      "properties": {
+        "rates": {"type": "string"},
+        "fx": {"type": "string"},
+        "inflation": {"type": "string"},
+        "policy": {"type": "string"}
+      }
+    },
+    "indices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "level", "change_pct"],
+        "properties": {
+          "name": {"type": "string"},
+          "level": {"type": "number"},
+          "change_pct": {"type": "number"},
+          "ytd_pct": {"type": "number"}
+        }
+      }
+    },
+    "sectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "trend"],
+        "properties": {
+          "name": {"type": "string"},
+          "trend": {"type": "string", "enum": ["bullish", "neutral", "bearish"]},
+          "rationale": {"type": "string"}
+        }
+      }
+    },
+    "signals": {
+      "type": "array",
+      "description": "Actionable cues from market data.",
+      "items": {
+        "type": "object",
+        "required": ["label", "direction", "weight"],
+        "properties": {
+          "label": {"type": "string"},
+          "direction": {"type": "string", "enum": ["risk_on", "risk_off", "neutral"]},
+          "weight": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {"type": "string"},
+          "url": {"type": "string"},
+          "value": {}
+        }
+      }
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  }
+}

@@ -1,0 +1,27 @@
+market: VN
+resident: KR
+last_updated: 2026-01-01
+notes: |
+  한국 거주자의 베트남 주식 투자. HOSE/HNX. 외국인 한도(FOL) 제약 있음.
+
+capital_gains:
+  rate: 0.22
+  basic_deduction_krw: 2500000
+  description: "한국 양도세 22%. 베트남은 외국인 양도세 0.1% (매도가 기준)로 단순."
+  vn_capital_gains_on_proceeds: 0.001
+  loss_offset: "해외주식 간 손익통산 가능"
+
+dividend:
+  withholding_vn: 0.05
+  withholding_kr: 0.104
+  description: "베트남 원천 5%, 한국 추가과세로 합 15.4% 수준. 외국납부세액공제 적용."
+
+transaction:
+  buy: 0.0015
+  sell: 0.001
+  description: "브로커 수수료 + 베트남 정부 부담금"
+
+routing_hints:
+  - "베트남 ETF(예: KR 상장 KINDEX 베트남 또는 US 상장 VNM)로 우회 시 세금 단순"
+  - "FOL(외국인 한도) 도달 종목은 프리미엄 거래 필요 — 비용 큼"
+  - "VND 직접 환전 어려움 → USD 경유 + 베트남 측 자본 송금 절차 시간 소요"

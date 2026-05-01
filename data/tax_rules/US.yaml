@@ -1,0 +1,35 @@
+market: US
+resident: KR
+last_updated: 2026-01-01
+notes: |
+  한국 거주자가 미국 주식에 투자하는 경우.
+  미-한 조세조약(1979)에 따라 배당 원천세 한도 15%.
+
+capital_gains:
+  rate: 0.22
+  basic_deduction_krw: 2500000
+  description: "해외주식 양도소득 22% (지방세 포함). 연 250만원 기본공제."
+  loss_offset: "동일 연도 해외주식 간 손익통산 가능. 해외-국내 통산 불가."
+  loss_carryover_years: 0
+  fx_treatment: "환차익 포함하여 KRW 기준으로 양도차익 계산"
+  filing: "다음해 5월 종합소득세와 별도로 양도소득세 신고"
+
+dividend:
+  withholding_us: 0.15
+  withholding_kr: 0.0
+  description: "미국 원천 15% (조세조약). 한국에서 추가 원천 없음. 종합과세 합산 시 외국납부세액공제."
+  comprehensive_threshold_krw: 20000000
+
+transaction:
+  buy: 0.0
+  sell: 0.0000278
+  description: "SEC fee (0.00278%) — 거의 무시 가능"
+
+routing_hints:
+  - "배당주(예: KO, JNJ)는 한국 상장 ETF로 우회 시 배당소득 15.4%로 더 낮을 수 있음 (단, 운용보수 차감)"
+  - "성장주는 직접 매수가 일반적 (배당 없음)"
+  - "연 250만원 기본공제 활용: 12월 말 손실 종목 매도 후 이듬해 재매수 (wash sale 룰 없음)"
+  - "환율 변동도 양도차익에 포함됨에 유의"
+
+special_accounts:
+  none: "한국 거주자는 미국 IRA/401k 사용 불가"

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Strategy",
+  "description": "Output from financial-advisor — personalized to portfolio. Consumed by tax-advisor for after-tax re-ranking.",
+  "type": "object",
+  "required": ["asof", "scenarios", "recommended_scenario"],
+  "properties": {
+    "asof": {"type": "string", "format": "date-time"},
+    "portfolio_snapshot": {
+      "type": "object",
+      "properties": {
+        "total_value_base": {"type": "number"},
+        "by_market": {"type": "object", "additionalProperties": {"type": "number"}},
+        "by_sector": {"type": "object", "additionalProperties": {"type": "number"}},
+        "cash_pct": {"type": "number"},
+        "concentration_top5_pct": {"type": "number"}
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "actions"],
+        "properties": {
+          "name": {"type": "string", "enum": ["conservative", "base", "aggressive"]},
+          "thesis": {"type": "string"},
+          "expected_return_pct": {"type": "number"},
+          "expected_mdd_pct": {"type": "number"},
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["op", "ticker", "weight_pct"],
+              "properties": {
+                "op": {"type": "string", "enum": ["buy", "sell", "hold", "trim", "add"]},
+                "ticker": {"type": "string"},
+                "name": {"type": "string"},
+                "market": {"type": "string"},
+                "account_pref": {"type": "array", "items": {"type": "string"}, "description": "Preferred account ids."},
+                "weight_pct": {"type": "number"},
+                "limit_price": {"type": "number"},
+                "horizon_days": {"type": "integer"},
+                "rationale": {"type": "string"},
+                "stop_loss": {"type": "number"},
+                "target": {"type": "number"},
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "description": "Pointers to MarketReport/FundamentalReport/ChartReport sources."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "recommended_scenario": {"type": "string", "enum": ["conservative", "base", "aggressive"]},
+    "open_questions": {"type": "array", "items": {"type": "string"}}
+  }
+}

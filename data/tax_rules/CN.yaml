@@ -1,0 +1,34 @@
+market: CN
+resident: KR
+last_updated: 2026-01-01
+notes: |
+  한국 거주자의 중국 A주(상해/심천) 투자. 후강퉁/선강퉁 또는 QFII 통한 접근.
+
+capital_gains:
+  rate: 0.22
+  basic_deduction_krw: 2500000
+  description: "해외주식 양도소득 22% (한국 측). 중국 측 양도세는 외국인에게 일시 면제 중."
+  cn_capital_gains: "외국인 개인투자자 A주 양도차익 면세 (정책 연장 중)"
+  loss_offset: "해외주식 간 손익통산 가능"
+
+dividend:
+  withholding_cn: 0.10
+  withholding_kr: 0.0
+  description: "중국 원천 10%. 한중 조세조약 한도. 한국 추가 과세 없음."
+
+transaction:
+  buy: 0.0
+  sell:
+    A_shares: 0.001
+  stamp_duty: 0.0005
+  description: "매도 시 인지세 0.05% (정부 조정 가능). 거래세 0.1% 별도."
+
+routing_hints:
+  - "후강퉁/선강퉁 통해야 거래 가능. 일부 브로커만 지원."
+  - "본토 A주 vs 홍콩 H주 동일 기업이면 H주가 통상 디스카운트 + 세금 단순"
+  - "환율: CNY 직접 환전 어려움 → USD 경유"
+
+market_access:
+  - 후강퉁
+  - 선강퉁
+  - QFII

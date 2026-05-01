@@ -1,0 +1,40 @@
+profile:
+  risk_tolerance: moderate
+  horizon_years: 5
+  base_currency: KRW
+  resident_country: KR
+  goals:
+    - capital_growth
+    - tax_efficiency
+
+accounts:
+  - id: kr-main
+    broker: 키움증권
+    type: 일반
+    market: KR
+    currency: KRW
+  - id: kr-isa
+    broker: 키움증권
+    type: ISA
+    market: KR
+    currency: KRW
+    isa_limit_remaining: 20000000
+  - id: us-main
+    broker: IBKR
+    type: 해외일반
+    market: US
+    currency: USD
+
+holdings: []
+
+cash:
+  - account: kr-main
+    amount: 0
+    currency: KRW
+  - account: us-main
+    amount: 0
+    currency: USD
+
+ledger: []
+
+watchlist: []

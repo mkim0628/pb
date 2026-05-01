@@ -1,0 +1,58 @@
+market: KR
+resident: KR
+last_updated: 2026-01-01
+notes: |
+  한국 거주자가 국내 상장 주식에 투자하는 경우.
+  대주주 요건/금투세는 정책 변동이 잦으므로 매년 검증 필요.
+
+capital_gains:
+  retail_listed:
+    rate: 0.0
+    description: "소액주주 상장주식 양도차익 비과세"
+  major_shareholder_listed:
+    rate: [0.22, 0.275, 0.33]
+    brackets_krw: [300000000, 5000000000]
+    description: "대주주(지분 1% 또는 10억 이상): 22%, 3억 초과 25% (지방세 포함 27.5%), 1년 미만 보유 시 33%"
+  unlisted:
+    rate: 0.22
+    sme_rate: 0.11
+  loss_carryover_years: 5
+
+dividend:
+  withholding: 0.154
+  description: "배당소득세 14% + 지방세 1.4% = 15.4% 원천징수"
+  comprehensive_threshold_krw: 20000000
+  comprehensive_top_rate: 0.495
+
+transaction:
+  buy: 0.0
+  sell:
+    KOSPI: 0.0018
+    KOSDAQ: 0.0018
+    KONEX: 0.0010
+  description: "거래세 + 농특세 합산. 매도 시에만 부과."
+
+accounts:
+  ISA:
+    annual_contribution_limit_krw: 20000000
+    cumulative_limit_krw: 100000000
+    holding_period_years: 3
+    tax_benefit: "수익 200만원(서민형 400만원) 비과세, 초과분 9.9% 분리과세"
+  pension:
+    types: [연금저축, IRP]
+    annual_limit_krw: 9000000
+    tax_credit_rate: [0.132, 0.165]
+    withdrawal_rate: [0.033, 0.055]
+  general:
+    tax_benefit: none
+
+financial_investment_income_tax:
+  status: "시행 시점 정책에 따라 변동 가능"
+  threshold_krw: 50000000
+  rate: [0.22, 0.275]
+  note: "도입 시 모든 금융투자소득 통산"
+
+routing_hints:
+  - "배당주는 ISA/연금계좌 우선 → 배당세 비과세 또는 저세율"
+  - "단기 매매는 일반계좌 (ISA는 3년 이상 유지 시 혜택)"
+  - "해외 ETF는 국내 상장(매매차익 15.4% 배당소득) vs 해외 직투(22% 양도) 세금 비교 필수"

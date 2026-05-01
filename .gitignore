@@ -1,0 +1,22 @@
+# Secrets
+.env
+.env.local
+
+# Caches
+data/cache/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Logs
+logs/
+*.log
+
+# Generated reports (kept out of VCS — local artifacts)
+reports/
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/
