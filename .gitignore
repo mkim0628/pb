@@ -13,8 +13,7 @@ __pycache__/
 logs/
 *.log
 
-# Generated reports (kept out of VCS — local artifacts)
-reports/
+# Generated reports — tracked so results are visible in repo
 
 # Editor/OS
 .DS_Store
