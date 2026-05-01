@@ -1,0 +1,36 @@
+{
+  "ticker": "PLTR",
+  "asof": "2026-05-01T00:00:00Z",
+  "timeframe": "1d",
+  "trend": "sideways",
+  "trend_strength": 0.0,
+  "support": [],
+  "resistance": [],
+  "moving_averages": {
+    "ma20": null,
+    "ma60": null,
+    "ma120": null,
+    "ma200": null,
+    "alignment": "mixed"
+  },
+  "momentum": {
+    "rsi14": null,
+    "macd_hist": null,
+    "stoch_k": null
+  },
+  "volume": {
+    "avg20": null,
+    "spike": false,
+    "obv_trend": "flat"
+  },
+  "patterns": [],
+  "signals": [
+    {
+      "label": "DATA_UNAVAILABLE: yfinance HTTP 403 — host not in allowlist; network is blocked in this environment. All computed indicators require live or cached OHLCV data. No technical signals can be derived.",
+      "direction": "hold",
+      "weight": 0.0
+    }
+  ],
+  "entry_zones": [],
+  "confidence": 0.0
+}
