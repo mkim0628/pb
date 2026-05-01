@@ -1,0 +1,103 @@
+{
+  "asof": "2026-05-01T17:00:00+09:00",
+  "resident_country": "KR",
+  "actions": [
+    {
+      "ticker": "PLTR",
+      "op": "hold",
+      "recommended_account": "us-main",
+      "estimated_tax_amount": 0,
+      "tax_breakdown": {
+        "capital_gains": 0,
+        "dividend_withholding": 0,
+        "transaction": 0,
+        "stamp_duty": 0
+      },
+      "after_tax_return_pct": 0.0,
+      "loss_harvest_pair": null,
+      "execution_order": 1,
+      "notes": "Conservative scenario: watch-only, zero weight, zero tax surface. No action triggers tax. Account routing: us-main is the only viable account for direct PLTR (no KR-listed single-stock wrapper; KR AI ETFs hold PLTR at <2% weight, not a substitute). Cite: tax_rules/US.yaml capital_gains.rate=0.22 (not yet applicable)."
+    },
+    {
+      "ticker": "PLTR",
+      "op": "buy",
+      "recommended_account": "us-main",
+      "estimated_tax_amount": 0,
+      "tax_breakdown": {
+        "capital_gains": 0,
+        "dividend_withholding": 0,
+        "transaction": 56,
+        "stamp_duty": 0
+      },
+      "after_tax_return_pct": 4.0,
+      "loss_harvest_pair": null,
+      "execution_order": 1,
+      "notes": "Base scenario starter buy: 2% of 100M KRW = 2,000,000 KRW notional. At +4% 1Y horizon, realized gain on this slice = 80,000 KRW. Combined with the conditional add slice (3M KRW notional, +4% = 120,000 KRW gain) total YTD US capital gain = 200,000 KRW, well below the 2,500,000 KRW basic deduction (tax_rules/US.yaml capital_gains.basic_deduction_krw). Effective capital gains tax = 0 KRW. PLTR pays no dividend, so no 15% withholding. SEC sell fee 0.0000278 * 2,080,000 KRW notional ≈ 56 KRW (negligible). NO loss harvest pair available — portfolio is empty (loss_offset rule allows same-year overseas-overseas pairing only, no carryover per loss_carryover_years=0). FX caveat: tax_rules/US.yaml fx_treatment — KRW-denominated gain includes USD/KRW move; if USD strengthens vs KRW the taxable gain inflates beyond the equity gain. No alternative KR-listed wrapper materially substitutes for direct PLTR exposure."
+    },
+    {
+      "ticker": "PLTR",
+      "op": "add",
+      "recommended_account": "us-main",
+      "estimated_tax_amount": 0,
+      "tax_breakdown": {
+        "capital_gains": 0,
+        "dividend_withholding": 0,
+        "transaction": 83,
+        "stamp_duty": 0
+      },
+      "after_tax_return_pct": 4.0,
+      "loss_harvest_pair": null,
+      "execution_order": 2,
+      "notes": "Base scenario conditional add: 3% of 100M KRW = 3,000,000 KRW notional, executed only on 2026-05-05 if EPS surprise >+15%. At +4% 1Y horizon, realized gain = 120,000 KRW. Aggregated with the 2% starter, total annual US gain = 200,000 KRW — fully absorbed by 2,500,000 KRW basic deduction; effective capital gains tax = 0 KRW. SEC sell fee ≈ 83 KRW. Execution_order=2 because add is contingent on the starter's print outcome. No dividend (PLTR), no stamp duty (US market). FX exposure layered on equity gain per US.yaml fx_treatment."
+    },
+    {
+      "ticker": "PLTR",
+      "op": "buy",
+      "recommended_account": "us-main",
+      "estimated_tax_amount": 0,
+      "tax_breakdown": {
+        "capital_gains": 0,
+        "dividend_withholding": 0,
+        "transaction": 187,
+        "stamp_duty": 0
+      },
+      "after_tax_return_pct": 12.0,
+      "loss_harvest_pair": null,
+      "execution_order": 1,
+      "notes": "Aggressive scenario pre-print buy: 6% of 100M KRW = 6,000,000 KRW notional. At +12% 1Y horizon, realized gain on this slice = 720,000 KRW. Combined with the 4% conditional add (4M KRW * 12% = 480,000 KRW), total annual US gain = 1,200,000 KRW — STILL within 2,500,000 KRW basic deduction (tax_rules/US.yaml). Effective capital gains tax = 0 KRW. SEC sell fee ≈ 187 KRW. After-tax return ≈ pre-tax 12% (transaction drag <0.01%). No KR-listed substitute provides equivalent PLTR concentration. NO loss harvest (empty portfolio). FX: a 10% USD/KRW appreciation alone would push gross KRW gain past the 2.5M deduction (6M*1.10*1.12 ≈ +1.39M on 6M slice + add slice ~+930K → ~2.32M, still under but margin tightens); a 15% USD strengthening + +12% equity gain would breach the deduction and trigger 22% on the excess. Monitor exchange rate at exit."
+    },
+    {
+      "ticker": "PLTR",
+      "op": "add",
+      "recommended_account": "us-main",
+      "estimated_tax_amount": 0,
+      "tax_breakdown": {
+        "capital_gains": 0,
+        "dividend_withholding": 0,
+        "transaction": 124,
+        "stamp_duty": 0
+      },
+      "after_tax_return_pct": 12.0,
+      "loss_harvest_pair": null,
+      "execution_order": 2,
+      "notes": "Aggressive scenario conditional post-print add: 4% of 100M KRW = 4,000,000 KRW notional, conditional on >+15% EPS surprise. At +12% horizon, gain = 480,000 KRW. Combined annual US gain (with 6% starter) = 1,200,000 KRW, within 2,500,000 KRW deduction → effective cap gains tax 0. SEC sell fee ≈ 124 KRW. Execution_order=2 (contingent). NOTE: if PLTR equity gain materially exceeds the 12% base case (e.g. T+5 +18% bucket extrapolated to 1Y), or USD appreciates significantly, the 10% combined position can breach 2.5M deduction. Breach math: gain > 2.5M KRW occurs at combined return ~25% (10M * 25% = 2.5M); above that, 22% applies on excess only. Plan to use 12月 말 partial-realize or pair with a future overseas loss to manage."
+    }
+  ],
+  "annual_outlook": {
+    "kr_basic_deduction_used_pct": 0.0,
+    "us_overseas_deduction_used_krw": 0,
+    "carryover_losses": 0,
+    "isa_room_remaining_krw": 20000000
+  },
+  "warnings": [
+    "FX trap (tax_rules/US.yaml fx_treatment): 양도차익은 KRW 환산 기준이며 USD/KRW 환차익이 그대로 양도차익에 가산됨. PLTR 주가 +12% 시나리오에서 USD가 KRW 대비 +10% 강세이면 KRW 양도차익은 약 +23.2%로 확대되어 2.5M 기본공제 한도에 근접. 환율 헤지 미실시 시 양도세 계산 시점의 환율을 반드시 모니터링.",
+    "단일종목 집중 위험: PLTR 100% 집중은 분산 부족. 베이스 시나리오 5%, 어그레시브 10% 가중치 자체는 단일종목 캡 내이지만, 100M KRW 포트폴리오에 PLTR만 보유한 가정은 섹터(미국 소프트웨어/AI) 및 종목 단일 노출. 분산 보완을 위한 추가 보유 권장.",
+    "정책 변동 리스크: 한국 해외주식 양도소득세 룰(22%, 250만원 기본공제) 및 금융투자소득세(금투세) 도입 여부는 정치적 변동성이 큼. 2026년 이후 룰 변경 시 본 시나리오의 effective tax 0 가정이 무너질 수 있음 (특히 기본공제 축소 또는 폐지).",
+    "손실 이월공제 불가 (tax_rules/US.yaml loss_carryover_years=0): 해외주식은 당해 연도 손익통산만 가능하고 다음 해로 이월 불가. 12월 말 미실현 손실 종목 발생 시 당해 연도 내 실현 필수.",
+    "Loss harvest 페어 부재: 포트폴리오 보유 종목이 없어 PLTR 익절 시 상쇄할 손실 종목이 없음. 본 시나리오에서는 2.5M 기본공제만으로 충분히 흡수되지만 향후 포트폴리오 확대 시 동일 연도 해외 손실 종목과 페어링 전략 재검토 필요.",
+    "Cross-market routing 검토 결과: PLTR은 미국 단일 상장(나스닥). ADR/이중상장 없음. KR 상장 AI ETF(예: TIGER 미국AI빅테크, KODEX 미국AI테크)는 PLTR 비중이 통상 1-3%로 낮아 단일종목 노출 대체재로 부적합. 직접 매수(us-main) 외 대안 없음.",
+    "종합과세 임계 (tax_rules/US.yaml dividend.comprehensive_threshold_krw=20M) 비해당: PLTR 무배당으로 배당+이자 합산 2,000만원 초과 위험 없음.",
+    "Wash-sale 룰 한국 부재: 12월 말 손실 실현 후 즉시 재매수 가능 (US.yaml routing_hints). 다만 PLTR 1년 보유 가정상 본 시나리오에서는 해당 없음.",
+    "양도세 신고: 다음 해 5월 별도 신고 (US.yaml capital_gains.filing). 종합소득세와 분리됨. 시나리오 상 effective tax 0이라도 신고 의무는 유지될 수 있으니 매도 발생 시 신고 준비."
+  ]
+}

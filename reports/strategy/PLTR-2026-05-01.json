@@ -1,0 +1,108 @@
+{
+  "asof": "2026-05-01T16:00:00+09:00",
+  "portfolio_snapshot": {
+    "total_value_base": 100000000,
+    "by_market": {"KR": 0, "US": 0},
+    "by_sector": {},
+    "cash_pct": 100.0,
+    "concentration_top5_pct": 0.0
+  },
+  "scenarios": [
+    {
+      "name": "conservative",
+      "thesis": "Earnings is a binary catalyst with options pricing a +/-10.5% move and fundamentals requiring a >+15% EPS surprise just to drive upside (T+5 +18%, 80% hit). With portfolio empty and chart data unavailable, the asymmetry does not justify pre-print risk; wait for post-print clarity.",
+      "expected_return_pct": 0,
+      "expected_mdd_pct": 0,
+      "actions": [
+        {
+          "op": "hold",
+          "ticker": "PLTR",
+          "name": "Palantir Technologies",
+          "market": "US",
+          "account_pref": ["us-main"],
+          "weight_pct": 0,
+          "rationale": "Watch-only into 2026-05-04 print. Re-evaluate on 2026-05-05 once the surprise bucket is known: only act if reaction lands in the >+15% beat bucket (avg T+5 +18%) and price stabilizes, or if a miss-driven -10% to -15% drawdown brings valuation closer to peer median 18x fwd PE (vs current 109x).",
+          "evidence_refs": ["reports/fundamentals/PLTR-2026-05-01.md"]
+        }
+      ]
+    },
+    {
+      "name": "base",
+      "thesis": "Take a small starter pre-print to participate if the >+15% surprise bucket triggers (T+5 +18%, 80% hit), and keep dry powder to add only after the print resolves the binary. Defensive setup (-22% YTD, software derated) limits downside vs cohort, but 109x fwd PE caps upside on anything less than a blowout.",
+      "expected_return_pct": 4,
+      "expected_mdd_pct": -12,
+      "actions": [
+        {
+          "op": "buy",
+          "ticker": "PLTR",
+          "name": "Palantir Technologies",
+          "market": "US",
+          "account_pref": ["us-main"],
+          "weight_pct": 2.0,
+          "horizon_days": 365,
+          "rationale": "Starter sized at 2% of portfolio (well below 10% concentration cap) sized down because reaction-bucket math is unfavorable in the modal 5-15% beat outcome (T+5 +1%, non-event). Confidence-weighted: fundamental confidence 0.50, chart confidence 0.0 -> half of a normal 4% starter.",
+          "stop_loss": null,
+          "target": null,
+          "evidence_refs": ["reports/fundamentals/PLTR-2026-05-01.md"]
+        },
+        {
+          "op": "add",
+          "ticker": "PLTR",
+          "name": "Palantir Technologies",
+          "market": "US",
+          "account_pref": ["us-main"],
+          "weight_pct": 3.0,
+          "horizon_days": 365,
+          "rationale": "Conditional add executed only on 2026-05-05 if EPS surprise lands in the >+15% blowout bucket (historical T+5 +18%, 80% hit). Skip the add on 5-15% beat (non-event) or miss. Brings total PLTR weight to 5% — within moderate-risk single-name budget.",
+          "stop_loss": null,
+          "target": null,
+          "evidence_refs": ["reports/fundamentals/PLTR-2026-05-01.md"]
+        }
+      ]
+    },
+    {
+      "name": "aggressive",
+      "thesis": "Lean into the defensive setup (already -22% YTD, software cohort derated, options ±10.5% is below historical blowout move) and pre-position larger ahead of print, then double down on a >+15% surprise. Accept the valuation tail risk (109x fwd PE) for asymmetric upside if AIP commercial traction or government acceleration drives a top-line beat.",
+      "expected_return_pct": 12,
+      "expected_mdd_pct": -25,
+      "actions": [
+        {
+          "op": "buy",
+          "ticker": "PLTR",
+          "name": "Palantir Technologies",
+          "market": "US",
+          "account_pref": ["us-main"],
+          "weight_pct": 6.0,
+          "horizon_days": 365,
+          "rationale": "Pre-print position sized to 6% (under 15% aggressive cap). Justified by defensive technical positioning per fundamental report and 56% rev growth + 46% adj op margin + $2.1B FCF + zero LT debt fundamentals. Sized to survive miss-bucket -15% drawdown (~0.9% portfolio loss).",
+          "stop_loss": null,
+          "target": null,
+          "evidence_refs": ["reports/fundamentals/PLTR-2026-05-01.md"]
+        },
+        {
+          "op": "add",
+          "ticker": "PLTR",
+          "name": "Palantir Technologies",
+          "market": "US",
+          "account_pref": ["us-main"],
+          "weight_pct": 4.0,
+          "horizon_days": 365,
+          "rationale": "Post-print add only if surprise >+15% (blowout bucket, T+5 +18% / 80% hit). Total PLTR weight then 10%, still under aggressive 15% single-name cap. Skip if 5-15% beat (non-event bucket) or miss.",
+          "stop_loss": null,
+          "target": null,
+          "evidence_refs": ["reports/fundamentals/PLTR-2026-05-01.md"]
+        }
+      ]
+    }
+  ],
+  "recommended_scenario": "base",
+  "open_questions": [
+    "Asymmetric setup tension: defensive positioning (-22% YTD, software derated, options ±10.5% reasonable) argues FOR pre-print exposure, but 109x fwd PE vs peer median 18x is the binding constraint and means even a 5-15% beat is a non-event (T+5 +1%). The only clearly profitable bucket is >+15% surprise.",
+    "Chart data is unavailable (yfinance blocked, ChartReport confidence 0.0). Stop_loss and target levels intentionally left null — DO NOT fabricate technical levels. Re-run chart-analyst once data access is restored before placing any limit/stop orders.",
+    "Fundamental confidence is only 0.50 (web-sourced, not live API). Validate next-quarter guidance language and AIP commercial revenue mix on the 2026-05-04 call before executing the conditional add.",
+    "Would deviate from base toward conservative if: (a) PLTR rallies >+5% into the print (compresses asymmetry further), or (b) software cohort re-rates higher pre-print removing the defensive cushion.",
+    "Would deviate from base toward aggressive if: (a) PLTR drops another -10% into the print on no company-specific news, or (b) chart data becomes available and confirms a clean technical base near support.",
+    "Portfolio is hypothetical 100M KRW with zero existing holdings — no concentration, sector, or overlap constraints binding. Real allocation should re-check against actual holdings once portfolio.yaml is populated.",
+    "FX: PLTR trades USD in us-main account. KRW base currency means an additional USD/KRW risk layer on top of equity risk; not modeled here."
+  ]
+}
