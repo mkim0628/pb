@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:finance.naver.com)",
+      "WebFetch(domain:polling.finance.naver.com)",
+      "WebFetch(domain:query1.finance.yahoo.com)",
+      "WebFetch(domain:query2.finance.yahoo.com)",
+      "Bash(python -m data.adapters.quote *)",
+      "Bash(python -m data.adapters.naver *)",
+      "Bash(python -m data.adapters.yfinance_adapter *)"
+    ]
+  },
+  "sandbox": {
+    "network": {
+      "allowedDomains": [
+        "finance.naver.com",
+        "polling.finance.naver.com",
+        "query1.finance.yahoo.com",
+        "query2.finance.yahoo.com"
+      ]
+    }
+  }
+}
