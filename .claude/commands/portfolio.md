@@ -7,7 +7,7 @@ Read `portfolio.yaml` and produce a concise markdown summary:
 ## Steps
 1. `python scripts/update_portfolio.py show` to load the structured state
 2. Compute (in base_currency = `profile.base_currency`):
-   - Total value = Σ(qty × current_price) + cash. Use `data/adapters/yfinance_adapter.py quote` for prices.
+   - Total value = Σ(qty × current_price) + cash. Use `python -m data.adapters.quote <ticker>` for current prices — KR routes to Naver, everything else to Yahoo.
    - Allocation by market (KR/US/JP/CN/HK/...)
    - Top 5 positions by weight
    - Cash %

@@ -49,16 +49,38 @@ def price_history(ticker: str, period: str = "6mo", interval: str = "1d") -> lis
 
 def quote(ticker: str) -> dict[str, Any]:
     _require()
-    if (cached := cache_get("yf_quote", ticker, max_age_seconds=300)) is not None:
+    if (cached := cache_get("yf_quote", ticker, max_age_seconds=60)) is not None:
         return cached
-    info = yf.Ticker(ticker).fast_info
+    t = yf.Ticker(ticker)
+    last = currency = market_cap = year_high = year_low = None
+    try:
+        info = t.fast_info
+        last = float(info.last_price) if info.last_price else None
+        currency = info.currency
+        market_cap = getattr(info, "market_cap", None)
+        year_high = getattr(info, "year_high", None)
+        year_low = getattr(info, "year_low", None)
+    except Exception:
+        pass
+    if last is None:
+        # Fallback: last close from intraday history (1d/1m → 5d/1d).
+        for period, interval in (("1d", "1m"), ("5d", "1d")):
+            try:
+                df = t.history(period=period, interval=interval, auto_adjust=False)
+                if not df.empty:
+                    last = float(df["Close"].iloc[-1])
+                    break
+            except Exception:
+                continue
+    if last is None:
+        raise RuntimeError(f"yfinance quote failed for {ticker} (network or ticker invalid)")
     out = {
         "ticker": ticker,
-        "last": float(info.last_price) if info.last_price else None,
-        "currency": info.currency,
-        "market_cap": getattr(info, "market_cap", None),
-        "year_high": getattr(info, "year_high", None),
-        "year_low": getattr(info, "year_low", None),
+        "last": last,
+        "currency": currency,
+        "market_cap": market_cap,
+        "year_high": year_high,
+        "year_low": year_low,
     }
     cache_put("yf_quote", ticker, out)
     return out
