@@ -4,37 +4,48 @@ profile:
   base_currency: KRW
   resident_country: KR
   goals:
-    - capital_growth
-    - tax_efficiency
-
+  - capital_growth
+  - tax_efficiency
 accounts:
-  - id: kr-main
-    broker: 키움증권
-    type: 일반
-    market: KR
-    currency: KRW
-  - id: kr-isa
-    broker: 키움증권
-    type: ISA
-    market: KR
-    currency: KRW
-    isa_limit_remaining: 20000000
-  - id: us-main
-    broker: IBKR
-    type: 해외일반
-    market: US
-    currency: USD
-
-holdings: []
-
+- id: kr-main
+  broker: 키움증권
+  type: 일반
+  market: KR
+  currency: KRW
+- id: kr-isa
+  broker: 키움증권
+  type: ISA
+  market: KR
+  currency: KRW
+  isa_limit_remaining: 20000000
+- id: us-main
+  broker: IBKR
+  type: 해외일반
+  market: US
+  currency: USD
+holdings:
+- account: us-main
+  ticker: SOXL
+  name: null
+  lots:
+  - qty: 465.0
+    price: 122.7
+    date: '2026-04-30'
 cash:
-  - account: kr-main
-    amount: 0
-    currency: KRW
-  - account: us-main
-    amount: 0
-    currency: USD
-
-ledger: []
-
+- account: kr-main
+  amount: 0
+  currency: KRW
+- account: us-main
+  amount: 0
+  currency: USD
+ledger:
+- op: buy
+  ts: '2026-05-01T11:26:41'
+  account: us-main
+  ticker: SOXL
+  name: null
+  qty: 465.0
+  price: 122.7
+  date: '2026-04-30'
+  fee: 0
 watchlist: []
