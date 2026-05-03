@@ -84,6 +84,7 @@ reports/                    # generated artifacts (gitignored)
 ## Git workflow rules
 
 - **Analysis requests publish directly to `main`**: `/analyze`, `/brief`, `/daily-brief`, `/weekly-review`, `/quarterly-tax`, `/earnings-alert`, `/strategy`, `/rebalance`, `/tax-sim`, 또는 자유발화 종목 분석 요청("XXX 분석해줘", "XXX 어때?" 등)으로 생성되는 모든 산출물(`reports/` 하위 파일, 갱신된 `portfolio.yaml`)은 별도 feature branch를 만들지 말고 **`main` 브랜치에 직접 commit & push**합니다. PR도 만들지 않습니다.
+- **분석 결과는 먼저 채팅으로 보고 → 사용자 승인 후 push**: `/analyze`, 펀더멘털 분석, 차트 분석, 또는 자유발화 종목 분석 요청을 받으면 **먼저 채팅에 결과를 요약해서 보여주고, 사용자에게 "이 내용을 `.md`로 push할까요?"라고 명시적으로 확인**한 뒤에만 `reports/` 하위에 파일을 쓰고 `main`에 push합니다. 사용자가 거부하면 파일 생성/커밋/푸시 모두 건너뜁니다. 단, `/daily-brief`·`/weekly-review`·`/quarterly-tax`처럼 cron으로 도는 자동 스케줄 작업은 이 확인 절차를 거치지 않고 바로 push합니다.
 - **코드/스키마 변경은 feature branch**: 에이전트 정의(`.claude/agents/`), 슬래시 명령(`.claude/commands/`), 스크립트(`scripts/`), 스키마(`schemas/`), 어댑터(`data/adapters/`) 수정은 기존대로 지정된 feature branch에서 작업하고 PR을 통해 머지합니다.
 
 ## Design principles
