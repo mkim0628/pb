@@ -81,6 +81,11 @@ reports/                    # generated artifacts (gitignored)
 
 - **Report language**: 모든 사용자용 `.md` 리포트(reports/ 하위 전체 — market, fundamentals, charts, strategy, tax, daily, weekly, quarterly, events)는 **한글**을 기본으로 작성합니다. 티커·지표명·숫자 단위 등 고유명사는 영문 그대로 둬도 됩니다. JSON 스키마(`schemas/`) 필드명·enum 값은 그대로 영문 유지.
 
+## Git workflow rules
+
+- **Analysis requests publish directly to `main`**: `/analyze`, `/brief`, `/daily-brief`, `/weekly-review`, `/quarterly-tax`, `/earnings-alert`, `/strategy`, `/rebalance`, `/tax-sim`, 또는 자유발화 종목 분석 요청("XXX 분석해줘", "XXX 어때?" 등)으로 생성되는 모든 산출물(`reports/` 하위 파일, 갱신된 `portfolio.yaml`)은 별도 feature branch를 만들지 말고 **`main` 브랜치에 직접 commit & push**합니다. PR도 만들지 않습니다.
+- **코드/스키마 변경은 feature branch**: 에이전트 정의(`.claude/agents/`), 슬래시 명령(`.claude/commands/`), 스크립트(`scripts/`), 스키마(`schemas/`), 어댑터(`data/adapters/`) 수정은 기존대로 지정된 feature branch에서 작업하고 PR을 통해 머지합니다.
+
 ## Design principles
 
 1. **After-tax decisions**: financial-advisor proposes → tax-advisor re-ranks by `after_tax_return_pct`. Always show post-tax numbers.
