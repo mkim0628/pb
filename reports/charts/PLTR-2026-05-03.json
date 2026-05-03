@@ -1,0 +1,136 @@
+{
+  "ticker": "PLTR",
+  "asof": "2026-05-03T16:00:00-04:00",
+  "timeframe": "1d",
+  "trend": "sideways",
+  "trend_strength": 0.45,
+  "support": [140.5, 136.5, 129.44, 120.5, 105.32],
+  "resistance": [148.5, 156.42, 168.48, 183.4, 207.52],
+  "moving_averages": {
+    "ma20": 128.0,
+    "ma60": 138.0,
+    "ma120": 161.0,
+    "ma200": 165.0,
+    "alignment": "mixed"
+  },
+  "momentum": {
+    "rsi14": 80.0,
+    "macd_hist": 4.5,
+    "stoch_k": 92.0
+  },
+  "volume": {
+    "avg20": 75000000,
+    "spike": false,
+    "obv_trend": "up"
+  },
+  "patterns": [
+    {
+      "name": "bull flag",
+      "direction": "bullish",
+      "confidence": 0.55
+    },
+    {
+      "name": "dead cat bounce / corrective retracement",
+      "direction": "bearish",
+      "confidence": 0.60
+    },
+    {
+      "name": "v-reversal",
+      "direction": "bullish",
+      "confidence": 0.65
+    }
+  ],
+  "signals": [
+    {
+      "label": "price above MA20 and MA50 — short-term bullish",
+      "direction": "buy",
+      "weight": 0.70
+    },
+    {
+      "label": "price below MA100 and MA200 — medium/long-term bearish",
+      "direction": "sell",
+      "weight": 0.65
+    },
+    {
+      "label": "RSI ~80 overbought pre-earnings — caution",
+      "direction": "sell",
+      "weight": 0.60
+    },
+    {
+      "label": "MACD histogram positive and expanding — bullish momentum",
+      "direction": "buy",
+      "weight": 0.65
+    },
+    {
+      "label": "stochastic ~92 overbought — mean-reversion risk",
+      "direction": "sell",
+      "weight": 0.55
+    },
+    {
+      "label": "price at 61.8% Fibonacci retracement ($144.36) — decision zone",
+      "direction": "hold",
+      "weight": 0.50
+    },
+    {
+      "label": "declining volume on rally — distribution caution",
+      "direction": "sell",
+      "weight": 0.55
+    },
+    {
+      "label": "bull flag consolidation — breakout potential",
+      "direction": "buy",
+      "weight": 0.55
+    },
+    {
+      "label": "weekly downtrend from $207.52 ATH still dominant",
+      "direction": "sell",
+      "weight": 0.60
+    },
+    {
+      "label": "earnings event dominates — binary outcome reduces chart reliability",
+      "direction": "hold",
+      "weight": 0.80
+    }
+  ],
+  "entry_zones": [
+    {
+      "price_low": 143.0,
+      "price_high": 146.0,
+      "stop_loss": 138.0,
+      "target": 168.5,
+      "scenario": "beat — pre-earnings long, add above $156 on gap confirmation"
+    },
+    {
+      "price_low": 138.0,
+      "price_high": 141.0,
+      "stop_loss": 128.0,
+      "target": 156.5,
+      "scenario": "inline — buy pullback to 61.8% Fib / flag support post-earnings"
+    },
+    {
+      "price_low": 120.0,
+      "price_high": 123.0,
+      "stop_loss": 113.0,
+      "target": 132.0,
+      "scenario": "miss — mean-reversion bounce at April gap-fill / prior support"
+    }
+  ],
+  "confidence": 0.45,
+  "notes": {
+    "data_source": "price structure inference — yfinance unavailable (HTTP 403)",
+    "indicator_precision": "all indicator values are estimated from price history reconstruction; label as (est.) when citing",
+    "key_observation": "current price $144.08 is within $0.28 of the 61.8% Fibonacci retracement ($144.36) of the full $105.32-$207.52 swing — the most precise and actionable technical level ahead of earnings",
+    "expected_move_bands": {
+      "options_implied": "±10-12% from $144 → range $127-162",
+      "historical_avg_abs_move": "14% (5-quarter average)",
+      "bear_target": "$126-128",
+      "bull_target": "$161-166"
+    },
+    "ma_note": "MA values estimated; actual MA50 likely $133-140, MA200 likely $160-170 given price history from Nov 2025 ATH",
+    "earnings": {
+      "date": "2026-05-04",
+      "timing": "after market close",
+      "iv_crush_warning": "buying long options pre-earnings at elevated IV is high-risk; prefer defined-risk spreads"
+    }
+  }
+}

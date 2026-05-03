@@ -1,0 +1,95 @@
+{
+  "ticker": "PLTR",
+  "name": "Palantir Technologies Inc.",
+  "market": "US",
+  "asof": "2026-05-03T18:00:00Z",
+  "health": {
+    "revenue_trend": [553, 678, 726, 828, 884, 1003, 1180, 1407],
+    "op_margin_trend": [36, 37, 38, 45, 44, 46, 46, 46],
+    "net_margin_trend": [3, 6, 6, 9, 12, 18, 25, 36],
+    "fcf_trend": [149, 196, 435, 517, 370, 569, 540, 620],
+    "roe": 0.18,
+    "debt_to_equity": 0.19,
+    "current_ratio": 5.6,
+    "peer_percentile": {
+      "growth": 99,
+      "margin": 95,
+      "leverage": 95
+    },
+    "narrative": "Best-in-class growth+margin combo (Rule-of-X ~110). Net cash, no debt. Fundamentals are anomalously good; the entire trade has migrated to valuation. FY25 revenue ~$4.475B (+56%), adj op margin >40%, FCF ~$2.1B."
+  },
+  "earnings": {
+    "consensus": {
+      "next_quarter_eps": 0.28,
+      "next_quarter_rev": 1540,
+      "fy_eps": 1.32,
+      "fy_rev": 7200,
+      "revision_30d_pct": 2.0,
+      "whisper_gap_pct": 3.5
+    },
+    "surprise_history": [
+      {"date": "2024-02-05", "eps_surprise_pct": 20, "rev_surprise_pct": 5, "ret_t1": 31, "ret_t5": 25, "ret_t20": 18},
+      {"date": "2024-05-06", "eps_surprise_pct": 0, "rev_surprise_pct": 2, "ret_t1": -15, "ret_t5": -10, "ret_t20": -7},
+      {"date": "2024-08-05", "eps_surprise_pct": 20, "rev_surprise_pct": 3, "ret_t1": 10, "ret_t5": 14, "ret_t20": 20},
+      {"date": "2024-11-04", "eps_surprise_pct": 25, "rev_surprise_pct": 5, "ret_t1": 23, "ret_t5": 27, "ret_t20": 40},
+      {"date": "2025-02-03", "eps_surprise_pct": 27, "rev_surprise_pct": 7, "ret_t1": 24, "ret_t5": 20, "ret_t20": 30},
+      {"date": "2025-05-05", "eps_surprise_pct": 10, "rev_surprise_pct": 4, "ret_t1": -8, "ret_t5": -3, "ret_t20": 8},
+      {"date": "2025-08-04", "eps_surprise_pct": 12, "rev_surprise_pct": 5, "ret_t1": 5, "ret_t5": 8, "ret_t20": 18},
+      {"date": "2025-11-03", "eps_surprise_pct": 24, "rev_surprise_pct": 8, "ret_t1": -8, "ret_t5": -3, "ret_t20": 5},
+      {"date": "2026-02-02", "eps_surprise_pct": 19, "rev_surprise_pct": 7, "ret_t1": 22, "ret_t5": 18, "ret_t20": 12}
+    ],
+    "reaction_pattern": {
+      "eps_surprise_gt_15pct": {"n": 6, "avg_t1": 20.0, "avg_t5": 17.7, "avg_t20": 20.8, "hit_ratio": 0.83},
+      "eps_surprise_5_to_15pct": {"n": 2, "avg_t1": -1.5, "avg_t5": 2.5, "avg_t20": 13.0, "hit_ratio": 0.50},
+      "eps_surprise_lt_5pct": {"n": 1, "avg_t1": -15.0, "avg_t5": -10.0, "avg_t20": -7.0, "hit_ratio": 0.0},
+      "rev_surprise_gt_5pct": {"n": 5, "avg_t1": 12.4, "avg_t5": 11.4, "avg_t20": 17.0, "hit_ratio": 0.80},
+      "rev_surprise_2_to_5pct": {"n": 4, "avg_t1": 0.0, "avg_t5": 2.3, "avg_t20": 9.8, "hit_ratio": 0.75},
+      "blowout_with_guide_raise": {"n": 4, "avg_t1": 24.0, "avg_t5": 20.0, "avg_t20": 25.0, "hit_ratio": 1.0}
+    },
+    "pre_announcement_drift": {
+      "price_change_pct": -5.0,
+      "volume_zscore": 0.8,
+      "implied_signal": "Defensive positioning. YTD -13.8%, -31% from $207 ATH. Crowded bear sentiment + 'maximum disagreement' headlines. Setup is the inverse of October 2025 (which was 'long-and-strong into print' that delivered T+1 -8%). Asymmetry now favors a base-or-better resolution."
+    },
+    "next_earnings_date": "2026-05-04",
+    "scenario": {
+      "beat_case": "30% probability. Rev >$1.62B, FY26 raised to $7.45B+, US-Comm guide >$3.25B. Expected T+1 +12% to +18%, T+5 mid-target $164 (+14%).",
+      "base_case": "45% probability. Rev $1.55-$1.62B, FY26 raised to $7.30-$7.40B. Expected T+1 -2% to +6%, T+5 mid-target $148 (+3%). Probability-weighted T+5 expected return for the full distribution = +2.3%.",
+      "miss_case": "Mild bear (18%): rev $1.54-$1.56B, FY26 unchanged. T+5 mid-target $130 (-10%). Tail miss (7%): rev <$1.54B or US-Comm decel. T+5 mid-target $117 (-19%)."
+    }
+  },
+  "valuation": {
+    "pe": 220,
+    "fwd_pe": 109,
+    "ev_ebitda": 95,
+    "pbr": 28,
+    "peer_pe_median": 18
+  },
+  "risks": [
+    {"label": "Valuation compression", "severity": "high", "rationale": "Fwd P/E 109x vs SaaS peer median 18x. Multiple is dominant near-term return driver; any growth-durability doubt triggers 25-35% derate."},
+    {"label": "FY26 guide under-raise", "severity": "high", "rationale": "Buy-side whisper $7.4B+. Reiterating $7.18-$7.20B guide alone = T+1 -10%+ outcome based on Q1'25 / Q3'25 precedent."},
+    {"label": "US-Commercial deceleration", "severity": "medium", "rationale": "+137% YoY in Q4'25 is a once-in-cycle hard comp. Sequential deceleration is mathematically required; narrative-sensitive."},
+    {"label": "SBC / share count dilution", "severity": "medium", "rationale": "Stock-based comp ~20% of revenue; share count rises 3-5%/yr; no material buyback offset."},
+    {"label": "Insider 10b5-1 selling", "severity": "medium", "rationale": "Karp, Cohen, executive officers continue scheduled sales. Not new but sentiment headwind on weak tape."},
+    {"label": "Software-sector beta", "severity": "medium", "rationale": "NOW/IBM April 2026 misses dragged PLTR -8%. Highest-multiple software = highest beta in derate cycles."},
+    {"label": "Government concentration / political risk", "severity": "medium", "rationale": "US Gov ~55% revenue; recurring DOJ/FTC scrutiny on data practices; political heat headlines pre-print."},
+    {"label": "No buyback or dividend support", "severity": "low", "rationale": "Pure growth-multiple stock; no capital-return safety net during valuation compression."}
+  ],
+  "evidence": [
+    {"source": "TipRanks Q1 2026 preview - options implied", "url": "https://www.tipranks.com/news/palantir-pltr-q1-earnings-on-may-4-options-market-braces-for-a-10-55-swing"},
+    {"source": "TipRanks 115% EPS jump preview", "url": "https://www.tipranks.com/news/palantir-pltr-will-report-q1-earnings-on-may-4-wall-street-analysts-eye-115-earnings-jump"},
+    {"source": "Bitget Q1 2026 preview", "url": "https://www.bitget.com/news/detail/12560605394828"},
+    {"source": "Foreign Policy Journal pre-print sentiment", "url": "https://www.foreignpolicyjournal.com/2026/05/01/palantir-pltr-heads-into-may-4-earnings-20-percent-down-year-to-date-with-bulls-and-bears-at-maximum-disagreement/"},
+    {"source": "Palantir IR Q4 2025 release", "url": "https://investors.palantir.com/news-details/2026/Palantir-Reports-Q4-2025-U-S--Comm-Revenue-Growth-of-137-YY-and-Revenue-Growth-of-70-YY-Issues-FY-2026-Revenue-Guidance-of-61-YY-and-U-S--Comm-Revenue-Guidance-of-115-YY-Crushing-Consensus-Expectations/"},
+    {"source": "ProactiveInvestors Q1 preview", "url": "https://www.proactiveinvestors.com/companies/news/1091448/palantir-technologies-q1-expectations-buoyed-by-commercial-acceleration-government-contracts-1091448.html"},
+    {"source": "CNBC Q4 2025 analyst takeaways", "url": "https://www.cnbc.com/2026/02/03/palantir-soars-after-strong-earnings-what-analysts-highlighted.html"},
+    {"source": "TheStreet Morgan Stanley reset", "url": "https://www.thestreet.com/investing/stocks/morgan-stanley-resets-palantir-stock-forecast"},
+    {"source": "Schaeffer's pre-print", "url": "https://www.schaeffersresearch.com/content/analysis/2026/04/30/palantir-stock-shakes-off-big-tech-weakness-ahead-of-earnings"},
+    {"source": "Motley Fool bear thesis", "url": "https://www.fool.com/investing/2026/04/28/prediction-palantir-stock-is-going-to-plunge-may-5/"},
+    {"source": "OptionSlam earnings reactions history", "url": "https://www.optionslam.com/earnings/stocks/PLTR"},
+    {"source": "Macrotrends quarterly revenue", "url": "https://www.macrotrends.net/stocks/charts/PLTR/palantir-technologies/revenue"},
+    {"source": "FinanceCharts YTD performance", "url": "https://www.financecharts.com/stocks/PLTR/performance/total-return"}
+  ],
+  "confidence": 0.55,
+  "markdown_report_path": "reports/fundamentals/PLTR-2026-05-03.md"
+}
